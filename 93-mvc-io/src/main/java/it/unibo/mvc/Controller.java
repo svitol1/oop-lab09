@@ -15,23 +15,23 @@ public interface Controller {
      *
      * @throws NullPointerException if the string passed as input in null.
      */
-    public void setString(final String stringToSet);
+    void setString(String stringToSet);
 
     /**
      * @return The next string to print
      */
-    public String getSettedString();
+    String getSettedString();
 
     /**
      *
      * @return A List<String> with all the past strings that were printed.
      */
-    public List<String> getPrintHistory();
+    List<String> getPrintHistory();
 
     /**
      * Prints the current setted string in the STDOUT.
      *
      * @throws IllegalStateException if the string is not set.
      */
-    public void printSettedString();
+    void printSettedString();
 }

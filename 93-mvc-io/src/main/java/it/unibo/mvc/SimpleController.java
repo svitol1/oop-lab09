@@ -5,39 +5,31 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- *
+ * implements a simple I/O controller.
  *
  */
 public final class SimpleController implements Controller {
-    private String currSettedString = null;
-    private List<String> printHistory = new ArrayList<>();
+    private String currSettedString;
+    private final List<String> printHistory = new ArrayList<>();
 
     @Override
-    public void setString(String stringToSet) {
-        try {
-            this.currSettedString = Objects.requireNonNull(stringToSet);
-        } catch (NullPointerException e) {
-            throw new NullPointerException();
-        }
+    public void setString(final String stringToSet) {
+        this.currSettedString = Objects.requireNonNull(stringToSet);
     }
 
     @Override
     public String getSettedString() {
-        return currSettedString;
+        return this.currSettedString;
     }
 
     @Override
     public List<String> getPrintHistory() {
-        return printHistory;
+        return new ArrayList<>(this.printHistory);
     }
 
     @Override
     public void printSettedString() {
-        try {
-            System.out.println(Objects.requireNonNull(currSettedString));
-        } catch (NullPointerException e) {
-            throw new IllegalStateException("String has not been setted");
-        }
+        System.out.println(Objects.requireNonNull(this.currSettedString)); //NOPMD: just for exercise purpose.
         this.printHistory.add(this.currSettedString);
         this.currSettedString = null;
     }
